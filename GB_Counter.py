@@ -38,6 +38,19 @@ def increment_count_2():
     total_count_2 += 1
     total_count_label_2.config(text = "総青箱: " + str(total_count_2))
 
+def window_close():
+    total_ratio = count_2 / count_1 
+
+    with open('data.csv', mode = 'a', encoding = 'utf-8') as data_file:
+        writer = csv.writer(data_file)
+        writer.writerow(["date", total_count_1, total_count_2, total_ratio, count_1, count_2])
+
+    with open('temp.csv', mode = 'w', encoding = 'utf-8') as temp_file:
+        writer = csv.writer(temp_file)
+        writer.writerow(["date", total_count_1, total_count_2, total_ratio, count_1, count_2])
+
+    root.destroy()
+
 # Tkinterウィンドウの作成
 root = tk.Tk()
 root.title("アーカーシャ カウント")
@@ -84,4 +97,5 @@ total_count_label_2.pack(side = tk.LEFT)
 
 
 # ウィンドウのメインループ
+root.protocol("WM_DELETE_WINDOW", window_close)
 root.mainloop()
