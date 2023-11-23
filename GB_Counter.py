@@ -57,5 +57,22 @@ increment_button_2 = tk.Button(frame_2, text="増加", command=increment_count_2
 increment_button_2.pack(side = tk.LEFT)
 
 
+# Total Count 1
+frame_total_1 = tk.Frame(root)
+frame_total_1.pack()
+
+# カウント表示用のラベル
+total_count_label_1 = tk.Label(frame_total_1, text = "青箱: " + str(total_count_1))
+total_count_label_1.pack(side = tk.LEFT)
+
+
+# Total Count 2
+frame_total_2 = tk.Frame(root)
+frame_total_2.pack()
+
+total_count_label_2 = tk.Label(frame_total_2, text = "ヒヒ: " + str(total_count_2))
+total_count_label_2.pack(side = tk.LEFT)
+
+
 # ウィンドウのメインループ
 root.mainloop()
