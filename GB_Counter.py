@@ -11,12 +11,13 @@ count_1 = 0
 count_2 = 0
 
 with open('temp.csv', mode = 'r', encoding = 'utf-8') as input_file:
+
     init_datas = csv.reader(input_file)
     next(init_datas)
 
-    for init_data in init_datas:
-        total_count_1 = int(init_data[1])
-        total_count_1 = int(init_data[2])
+    init_data = next(init_datas, None)
+    total_count_1 = int(init_data[1])
+    total_count_2 = int(init_data[2])
 
 
 def increment_count_1():
@@ -24,10 +25,18 @@ def increment_count_1():
     count_1 += 1
     count_label_1.config(text = "青箱: " + str(count_1))
 
+    global total_count_1
+    total_count_1 += 1
+    total_count_label_1.config(text = "総青箱: " + str(total_count_1))
+
 def increment_count_2():
     global count_2
     count_2 += 1
     count_label_2.config(text = "ヒヒ: " + str(count_2))
+
+    global total_count_2
+    total_count_2 += 1
+    total_count_label_2.config(text = "総青箱: " + str(total_count_2))
 
 # Tkinterウィンドウの作成
 root = tk.Tk()
@@ -62,7 +71,7 @@ frame_total_1 = tk.Frame(root)
 frame_total_1.pack()
 
 # カウント表示用のラベル
-total_count_label_1 = tk.Label(frame_total_1, text = "青箱: " + str(total_count_1))
+total_count_label_1 = tk.Label(frame_total_1, text = "総青箱: " + str(total_count_1))
 total_count_label_1.pack(side = tk.LEFT)
 
 
@@ -70,7 +79,7 @@ total_count_label_1.pack(side = tk.LEFT)
 frame_total_2 = tk.Frame(root)
 frame_total_2.pack()
 
-total_count_label_2 = tk.Label(frame_total_2, text = "ヒヒ: " + str(total_count_2))
+total_count_label_2 = tk.Label(frame_total_2, text = "総ヒヒ: " + str(total_count_2))
 total_count_label_2.pack(side = tk.LEFT)
 
 
