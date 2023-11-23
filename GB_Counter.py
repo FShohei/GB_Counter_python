@@ -39,15 +39,16 @@ def increment_count_2():
     total_count_label_2.config(text = "総青箱: " + str(total_count_2))
 
 def window_close():
-    total_ratio = count_2 / count_1 
+    total_ratio = (count_2 / count_1) * 100 
+    s_total_ratio = '{:.2f}'.format(total_ratio)
 
-    with open('data.csv', mode = 'a', encoding = 'utf-8') as data_file:
+    with open('data.csv', mode = 'a', encoding = 'utf-8', newline = '') as data_file:
         writer = csv.writer(data_file)
-        writer.writerow(["date", total_count_1, total_count_2, total_ratio, count_1, count_2])
+        writer.writerow(["date", str(total_count_1).zfill(5), str(total_count_2).zfill(3), s_total_ratio, str(count_1).zfill(3), str(count_2).zfill(2)])
 
-    with open('temp.csv', mode = 'w', encoding = 'utf-8') as temp_file:
+    with open('temp.csv', mode = 'w', encoding = 'utf-8', newline = '') as temp_file:
         writer = csv.writer(temp_file)
-        writer.writerow(["date", total_count_1, total_count_2, total_ratio, count_1, count_2])
+        writer.writerow(["date", str(total_count_1).zfill(5), str(total_count_2).zfill(3), s_total_ratio, str(count_1).zfill(3), str(count_2).zfill(2)])
 
     root.destroy()
 
