@@ -13,7 +13,6 @@ count_2 = 0
 with open('temp.csv', mode = 'r', encoding = 'utf-8') as input_file:
 
     init_datas = csv.reader(input_file)
-    next(init_datas)
 
     init_data = next(init_datas, None)
     total_count_1 = int(init_data[1])
