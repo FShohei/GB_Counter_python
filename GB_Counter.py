@@ -37,6 +37,24 @@ def increment_count_2():
     total_count_2 += 1
     total_count_label_2.config(text = "総青箱: " + str(total_count_2))
 
+def decrement_count_1():
+    global count_1
+    count_1 -= 1
+    count_label_1.config(text = "青箱: " + str(count_1))
+
+    global total_count_1
+    total_count_1 -= 1
+    total_count_label_1.config(text = "総青箱: " + str(total_count_1))
+
+def decrement_count_2():
+    global count_2
+    count_2 -= 1
+    count_label_2.config(text = "ヒヒ: " + str(count_2))
+
+    global total_count_2
+    total_count_2 -= 1
+    total_count_label_2.config(text = "総青箱: " + str(total_count_2))
+
 def window_close():
     total_ratio = (count_2 / count_1) * 100 
     s_total_ratio = '{:.2f}'.format(total_ratio)
@@ -63,9 +81,11 @@ frame_1.pack()
 count_label_1 = tk.Label(frame_1, text = "青箱: " + str(count_1))
 count_label_1.pack(side = tk.LEFT)
 
-# カウント増加ボタン
-increment_button_1 = tk.Button(frame_1, text="増加", command=increment_count_1)
-increment_button_1.pack(side = tk.LEFT)
+# カウントボタン
+increment_button_1_inc = tk.Button(frame_1, text="+", command=increment_count_1)
+increment_button_1_inc.pack(side = tk.LEFT)
+increment_button_1_dec = tk.Button(frame_1, text="-", command=decrement_count_1)
+increment_button_1_dec.pack(side = tk.LEFT)
 
 
 # Count 2
@@ -75,8 +95,10 @@ frame_2.pack()
 count_label_2 = tk.Label(frame_2, text = "ヒヒ: " + str(count_2))
 count_label_2.pack(side = tk.LEFT)
 
-increment_button_2 = tk.Button(frame_2, text="増加", command=increment_count_2)
-increment_button_2.pack(side = tk.LEFT)
+increment_button_2_inc = tk.Button(frame_2, text="+", command=increment_count_2)
+increment_button_2_inc.pack(side = tk.LEFT)
+increment_button_2_dec = tk.Button(frame_2, text="-", command=decrement_count_2)
+increment_button_2_dec.pack(side = tk.LEFT)
 
 
 # Total Count 1
