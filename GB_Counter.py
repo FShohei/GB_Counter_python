@@ -1,10 +1,14 @@
 import tkinter as tk
 import csv
+from datetime import date
 
 """
 count_1 = 青箱
 count_2 = ヒヒイロカネ
 """
+
+date_str = (date.today()).strftime('%Y/%m/%d')
+
 total_count_1 = 0
 total_count_2 = 0
 count_1 = 0
@@ -61,11 +65,11 @@ def window_close():
 
     with open('data.csv', mode = 'a', encoding = 'utf-8', newline = '') as data_file:
         writer = csv.writer(data_file)
-        writer.writerow(["date", str(total_count_1).zfill(5), str(total_count_2).zfill(3), s_total_ratio, str(count_1).zfill(3), str(count_2).zfill(2)])
+        writer.writerow([date_str, str(total_count_1).zfill(5), str(total_count_2).zfill(3), s_total_ratio, str(count_1).zfill(3), str(count_2).zfill(2)])
 
     with open('temp.csv', mode = 'w', encoding = 'utf-8', newline = '') as temp_file:
         writer = csv.writer(temp_file)
-        writer.writerow(["date", str(total_count_1).zfill(5), str(total_count_2).zfill(3), s_total_ratio, str(count_1).zfill(3), str(count_2).zfill(2)])
+        writer.writerow([date_str, str(total_count_1).zfill(5), str(total_count_2).zfill(3), s_total_ratio, str(count_1).zfill(3), str(count_2).zfill(2)])
 
     root.destroy()
 
