@@ -63,13 +63,15 @@ def window_close():
     total_ratio = (count_2 / count_1) * 100 
     s_total_ratio = '{:.2f}'.format(total_ratio)
 
+    line = [date_str, str(total_count_1).zfill(5), str(total_count_2).zfill(3), s_total_ratio, str(count_1).zfill(3), str(count_2).zfill(2)]
+
     with open('data.csv', mode = 'a', encoding = 'utf-8', newline = '') as data_file:
         writer = csv.writer(data_file)
-        writer.writerow([date_str, str(total_count_1).zfill(5), str(total_count_2).zfill(3), s_total_ratio, str(count_1).zfill(3), str(count_2).zfill(2)])
+        writer.writerow(line)
 
     with open('temp.csv', mode = 'w', encoding = 'utf-8', newline = '') as temp_file:
         writer = csv.writer(temp_file)
-        writer.writerow([date_str, str(total_count_1).zfill(5), str(total_count_2).zfill(3), s_total_ratio, str(count_1).zfill(3), str(count_2).zfill(2)])
+        writer.writerow(line)
 
     root.destroy()
 
